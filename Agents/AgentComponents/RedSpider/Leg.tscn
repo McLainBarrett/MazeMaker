@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ofacj8gtfrji"]
+
+[ext_resource type="Script" path="res://Agents/AgentComponents/RedSpider/IKLegScript.gd" id="1_m7mm4"]
+[ext_resource type="Material" uid="uid://dfbctgsdkppwr" path="res://Agents/AgentComponents/RedSpider/RedSpiderMat.tres" id="2_4daj6"]
+
+[node name="Leg" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.494114)
+script = ExtResource("1_m7mm4")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612373, 0.612373, 0, 0, -0.01)
+
+[node name="UpperLeg" type="Node3D" parent="."]
+
+[node name="UpperLeg" type="CSGBox3D" parent="UpperLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+size = Vector3(0.1, 0.1, 0.5)
+material = ExtResource("2_4daj6")
+
+[node name="LowerLeg" type="Node3D" parent="UpperLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="LowerLeg" type="CSGBox3D" parent="UpperLeg/LowerLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+size = Vector3(0.1, 0.1, 0.5)
+material = ExtResource("2_4daj6")

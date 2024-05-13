@@ -1,0 +1,257 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg32utloqvv6k"]
+
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_81i5i"]
+[ext_resource type="Texture2D" uid="uid://d0mhbxs3vwjlp" path="res://Assets/BlueScreen.png" id="2_6thee"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qsu3o"]
+line_spacing = 5.0
+font_size = 32
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_81i5i")
+
+[node name="Main" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 378.0
+offset_right = -378.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TextEdit" type="TextEdit" parent="Main/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Maze Maker"
+
+[node name="Join_Button" type="Button" parent="Main/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Join"
+
+[node name="Host_Button" type="Button" parent="Main/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Host"
+
+[node name="Quit_Button" type="Button" parent="Main/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Quit"
+
+[node name="Amram_Button" type="Button" parent="Main/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Amram"
+
+[node name="Join" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 378.0
+offset_right = -378.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Join"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Join/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="Join/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+label_settings = SubResource("LabelSettings_qsu3o")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Join/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Join/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "IP Address: "
+
+[node name="TextEdit" type="TextEdit" parent="Join/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "192.168.0.164"
+placeholder_text = "Host's IP Address"
+
+[node name="Join_Button" type="Button" parent="Join/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Join"
+
+[node name="Back_Button" type="Button" parent="Join/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Back
+"
+
+[node name="Host" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 378.0
+offset_right = -378.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Host"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Host/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="Host/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+label_settings = SubResource("LabelSettings_qsu3o")
+horizontal_alignment = 1
+
+[node name="Start_Button" type="Button" parent="Host/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Start Server"
+
+[node name="SettingsPanel" type="Panel" parent="Host/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Host/MarginContainer/VBoxContainer/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Server Settings"
+horizontal_alignment = 1
+
+[node name="SizeSettings" type="HBoxContainer" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Length" type="VBoxContainer" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings/Length"]
+layout_mode = 2
+text = "Length"
+horizontal_alignment = 1
+
+[node name="LengthLineEdit" type="LineEdit" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings/Length"]
+layout_mode = 2
+text = "3"
+alignment = 1
+
+[node name="Width" type="VBoxContainer" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings/Width"]
+layout_mode = 2
+text = "Width"
+horizontal_alignment = 1
+
+[node name="WidthLineEdit" type="LineEdit" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings/Width"]
+layout_mode = 2
+text = "3"
+alignment = 1
+
+[node name="Height" type="VBoxContainer" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings/Height"]
+layout_mode = 2
+text = "Height"
+horizontal_alignment = 1
+
+[node name="HeightLineEdit" type="LineEdit" parent="Host/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/SizeSettings/Height"]
+layout_mode = 2
+text = "3"
+alignment = 1
+
+[node name="Back_Button" type="Button" parent="Host/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Back
+"
+
+[node name="BlueScreen" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6thee")
+
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Join_Button" to="." method="joinButtonPressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Host_Button" to="." method="hostButtonPressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Quit_Button" to="." method="quitButtonPressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Amram_Button" to="." method="amramButtonPressed"]
+[connection signal="pressed" from="Join/MarginContainer/VBoxContainer/Join_Button" to="." method="joinJoinButtonPressed"]
+[connection signal="pressed" from="Join/MarginContainer/VBoxContainer/Back_Button" to="." method="backButtonPressed"]
+[connection signal="pressed" from="Host/MarginContainer/VBoxContainer/Start_Button" to="." method="hostHostButtonPressed"]
+[connection signal="pressed" from="Host/MarginContainer/VBoxContainer/Back_Button" to="." method="backButtonPressed"]

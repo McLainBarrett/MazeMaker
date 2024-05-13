@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvxti2v3qvmq7"]
+
+[ext_resource type="Script" path="res://Scripts/Maze3D.gd" id="1_xlg0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4b74w"]
+transparency = 1
+albedo_color = Color(0.501961, 1, 0.501961, 0.501961)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqj3w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itwhr"]
+transparency = 1
+albedo_color = Color(1, 1, 0.501961, 0.501961)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_xlg0b")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Assets/Player.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 1
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="Entrance" type="Area3D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="Cube" type="CSGBox3D" parent="Entrance"]
+material = SubResource("StandardMaterial3D_4b74w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entrance"]
+shape = SubResource("BoxShape3D_lqj3w")
+
+[node name="Exit" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Cube" type="CSGBox3D" parent="Exit"]
+material = SubResource("StandardMaterial3D_itwhr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit"]
+shape = SubResource("BoxShape3D_lqj3w")
+
+[connection signal="body_entered" from="Entrance" to="." method="onPlayerEnter"]
+[connection signal="body_entered" from="Exit" to="." method="onPlayerExit"]

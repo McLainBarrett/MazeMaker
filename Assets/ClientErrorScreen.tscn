@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://cooy2rci7rleh"]
+
+[sub_resource type="GDScript" id="GDScript_uuew3"]
+resource_name = "ClientErrorScreen"
+script/source = "extends Control
+@onready var errorLabel = $Panel/MarginContainer/VBoxContainer/HBoxContainer/ErrorLabel
+
+func setText(text: String):
+	errorLabel.text = text
+
+func backButton():
+	get_tree().change_scene_to_file(\"res://Assets/Menu.tscn\")
+	queue_free()
+"
+
+[node name="ClientErrorScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_uuew3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 351.0
+offset_right = -351.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Oi Amram, ye fucekd it"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Error: "
+
+[node name="ErrorLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "TestError"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_right = 48
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/Button" to="." method="backButton"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbyjemm2vj7da"]
+
+[ext_resource type="Material" uid="uid://dfbctgsdkppwr" path="res://Agents/AgentComponents/RedSpider/RedSpiderMat.tres" id="1_c2idk"]
+[ext_resource type="Script" path="res://Agents/Agent.gd" id="1_ywwut"]
+[ext_resource type="PackedScene" uid="uid://ofacj8gtfrji" path="res://Agents/AgentComponents/RedSpider/Leg.tscn" id="2_j7anm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t502j"]
+
+[node name="Spider" type="CharacterBody3D"]
+script = ExtResource("1_ywwut")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_t502j")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radial_segments = 24
+rings = 12
+material = ExtResource("1_c2idk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+omni_range = 2.0
+
+[node name="Legs" type="Node3D" parent="."]
+
+[node name="Leg" parent="Legs" instance=ExtResource("2_j7anm")]
+strideLength = 0.5
+isUp = true
+
+[node name="Leg2" parent="Legs" instance=ExtResource("2_j7anm")]
+transform = Transform3D(0.817336, 0, -0.576161, 0, 1, 0, 0.576161, 0, 0.817336, -0.280873, 0, 0.406645)
+strideLength = 0.5
+
+[node name="Leg3" parent="Legs" instance=ExtResource("2_j7anm")]
+transform = Transform3D(0.775584, 0, 0.631245, 0, 1, 0, -0.631245, 0, 0.775584, 0.341388, -5.96046e-08, 0.363992)
+strideLength = 0.5
+isUp = true
+
+[node name="Leg4" parent="Legs" instance=ExtResource("2_j7anm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0511676, 0.0604297, -0.483793)
+strideLength = 0.5
+
+[node name="Leg5" parent="Legs" instance=ExtResource("2_j7anm")]
+transform = Transform3D(-0.86209, 0, 0.506756, 0, 1, 0, -0.506756, 0, -0.86209, 0.2636, 0.0604297, -0.424694)
+strideLength = 0.5
+isUp = true
+
+[node name="Leg6" parent="Legs" instance=ExtResource("2_j7anm")]
+transform = Transform3D(-0.807753, 0, -0.589521, 0, 1, 0, 0.589521, 0, -0.807753, -0.268756, 0.0544056, -0.405877)
+strideLength = 0.5

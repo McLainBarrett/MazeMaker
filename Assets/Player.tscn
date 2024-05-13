@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5mlctcvsj4of"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerBody.gd" id="1_75yki"]
+[ext_resource type="Script" path="res://Scripts/PlayerInput.gd" id="2_x60gb"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qhqfb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:playerID")
+properties/1/spawn = true
+properties/1/sync = false
+properties/1/watch = false
+properties/2/path = NodePath(".:rotation")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath(".:metadata/PlayerColor")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wax4g"]
+properties/0/path = NodePath("InputSynchronizer:HorizontalInput")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath("InputSynchronizer:VerticalInput")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("InputSynchronizer:Mouse")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o6y3c"]
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i35cv"]
+
+[sub_resource type="GDScript" id="GDScript_ku8fm"]
+script/source = "extends Panel
+
+func _process(delta: float) -> void:
+	$\".\".visible = (Input.mouse_mode == Input.MOUSE_MODE_VISIBLE)
+
+func onQuitButton():
+	OVERLORD.disconnectSelf()
+	get_tree().change_scene_to_file(\"res://Assets/Menu.tscn\")
+"
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+collision_layer = 0
+collision_mask = 13
+axis_lock_angular_z = true
+motion_mode = 1
+script = ExtResource("1_75yki")
+metadata/PlayerColor = Color(1, 1, 1, 1)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_qhqfb")
+
+[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_wax4g")
+script = ExtResource("2_x60gb")
+
+[node name="Camera" type="Camera3D" parent="."]
+fov = 90.0
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.259004, 0)
+shape = SubResource("CapsuleShape3D_o6y3c")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+shadow_enabled = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.259, 0)
+height = 1.5
+sides = 6
+smooth_faces = false
+material = SubResource("StandardMaterial3D_i35cv")
+
+[node name="ESCmenu" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1362.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_ku8fm")
+
+[node name="MarginContainer" type="MarginContainer" parent="ESCmenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ESCmenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ESCmenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Paused (not really)"
+
+[node name="Button" type="Button" parent="ESCmenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit to Menu"
+
+[connection signal="pressed" from="ESCmenu/MarginContainer/VBoxContainer/Button" to="ESCmenu" method="onQuitButton"]

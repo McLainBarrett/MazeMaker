@@ -1,0 +1,33 @@
+V Spawn protection
+V Body Colors
+V IP error catching/reporting
+V Maze size defaults, bounding [2, 100]
+V End
+	All players have to have touched end
+	Enables "Start"
+		Backtracking
+V Amram Button
+	Makes menus slightly greener
+	Blue Screen after x clicks
+		Fullscreen
+V Pause Menu
+	Quit button
+
+_ Something happens after backtrack
+	Close server?
+	Victory screen with timer?
+_ Camera Smoothing?
+Sync Glowsticks
+	Random hues for people/sticks
+	Limit
+Sync Spiders
+Death?
+
+
+
+Splash text:
+"Guaranteed not to have as many security flaws as it could have had!"
+"FDA"
+*your ip address*
+random copypasta
+":thinking:"
